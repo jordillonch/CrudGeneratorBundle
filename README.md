@@ -24,8 +24,8 @@ Add following lines to your `composer.json` file:
 
     "sensio/generator-bundle": "dev-master",
     "pagerfanta/pagerfanta": "dev-master",
-    "lexik/form-filter-bundle": "dev-master"
-    "jordillonch/crud-generator": "dev-master",
+    "lexik/form-filter-bundle": "dev-master",
+    "jordillonch/crud-generator": "dev-master"
 
 Execute:
 
