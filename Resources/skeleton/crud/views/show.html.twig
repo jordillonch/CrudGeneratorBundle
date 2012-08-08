@@ -1,0 +1,31 @@
+{{ "{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}" }}
+
+{{ "{% block title %}" }}
+{{ "{{ parent() }} - " ~ entity ~ " List" }}
+{{ "{% endblock %}" }}
+
+{{ "{% block page %}" }}
+
+<h1>{{ entity }}</h1>
+
+<form class="form-horizontal">
+    <fieldset>
+        {%- for field, metadata in fields %}
+        <div class="control-group">
+            <label class="control-label">{{ field|capitalize }}</label>
+            <div class="controls">
+                {%- if metadata.type in ['date', 'datetime'] %}
+                <span class="input-xlarge uneditable-input">{{ '{{ entity.'~ field|replace({'_': ''}) ~'|date(\'Y-m-d H:i:s\') }}' }}</span>
+                {%- else %}
+                <span class="input-xlarge uneditable-input">{{ '{{ entity.'~ field|replace({'_': ''}) ~' }}' }}</span>
+                {%- endif %}
+            </div>
+        </div>
+        {%- endfor %}
+    </fieldset>
+</form>
+
+{% set hide_edit, hide_delete = false, false %}
+{% include 'views/others/record_actions.html.twig' %}
+
+{{ "{% endblock %}" }}

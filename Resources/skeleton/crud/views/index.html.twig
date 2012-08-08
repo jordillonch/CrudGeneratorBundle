@@ -1,0 +1,111 @@
+{{ "{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}" }}
+
+{{ "{% block title %}" }}
+{{ "{{ parent() }} - " ~ entity ~ " List" }}
+{{ "{% endblock %}" }}
+
+{{ "{% block page %}" }}
+
+<div class="row">
+
+    <div class="span9">
+        <h1>{{ entity }} list</h1>
+    </div>
+    <div class="span2">
+        {{ '{% if form_errors(filterForm) %}' }}
+        <div class="alert alert-block alert-error fade in form-errors">
+            {{ '{{ form_errors(filterForm) }}' }}
+        </div>
+        {{ '{% endif %}' }}
+        &nbsp;
+    </div>
+    <div class="span1">
+        <a class="btn dropdown-toggle" data-toggle="collapse" data-target="#filters">
+            Filters
+            <span class="caret"></span>
+        </a>
+    </div>
+
+    <div class="span12">
+        <div id="filters" class="collapse">
+
+            <form class="well" action="{{ "{{ path('"~ route_name_prefix ~"') }}" }}" method="post" {{ "{{ form_enctype(filterForm) }}" }}>
+
+                {%- for field, metadata in fields %}
+
+                {{ "{{ form_row(filterForm." ~ field ~ ") }}" }}
+
+                {%- endfor %}
+
+                {{ "{{ form_rest(filterForm) }}" }}
+
+                <p>
+                    <button type="submit" name="filter_action" value="reset">Reset</button>
+                    <button type="submit" name="filter_action" value="filter">Filter</button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="span12">
+
+    <table class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+        {%- for field, metadata in fields %}
+
+            <th>{{ field|capitalize }}</th>
+
+        {%- endfor %}
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{ '{% for entity in entities %}' }}
+        <tr>
+
+    {%- for field, metadata in fields %}
+        {%- if loop.first and ('show' in actions) %}
+
+            <td><a href="{{ "{{ path('"~ route_name_prefix ~"_show', { 'id': entity.id }) }}" }}">{{ '{{ entity.'~ field|replace({'_': ''}) ~' }}' }}</a></td>
+
+        {%- elseif metadata.type in ['date', 'datetime'] %}
+
+            <td>{{ '{% if entity.'~ field|replace({'_': ''}) ~' %}{{ entity.'~ field|replace({'_': ''}) ~'|date(\'Y-m-d H:i:s\') }}{% endif %}' }}</td>
+
+        {%- else %}
+
+            <td>{{ '{{ entity.'~ field|replace({'_': ''}) ~' }}' }}</td>
+
+        {%- endif %}
+
+        {%- if loop.last %}
+
+            <td>
+                {%- include "views/others/actions.html.twig" %}
+            </td>
+
+        {%- endif %}
+    {%- endfor %}
+
+        </tr>
+    {{ '{% endfor %}' }}
+    </tbody>
+</table>
+    </div>
+
+    <div class="span4">
+    {{ '{{ pagerHtml|raw }}' }}
+    </div>
+
+    {% if 'new' in actions %}
+    <div class="span8">
+    <a class="btn likepaginator" href="{{ "{{ path('"~ route_name_prefix ~"_new') }}" }}">
+            Create a new entry
+        </a>
+    </div>
+{% endif %}
+</div>
+
+{{ "{% endblock %}" }}

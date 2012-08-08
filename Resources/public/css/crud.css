@@ -1,0 +1,14 @@
+.likepaginator {
+    margin: 18px 0;
+    float: right;
+}
+.float-left {
+    float: left;
+    margin: 5px;
+}
+.form-errors {
+    padding: 5px;
+}
+.form-errors > ul {
+    list-style: none;
+}

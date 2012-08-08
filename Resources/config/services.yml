@@ -1,0 +1,7 @@
+parameters:
+#    jordi_llonch_crud_generator.example.class: JordiLlonch\Bundle\CrudGeneratorBundle\Example
+
+services:
+#    jordi_llonch_crud_generator.example:
+#        class: %jordi_llonch_crud_generator.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
