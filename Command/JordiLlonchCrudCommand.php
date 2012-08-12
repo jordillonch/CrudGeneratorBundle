@@ -1,9 +1,11 @@
 <?php
 
 /*
- * This file is part of the Symfony package.
+ * This file is part of the CrudGeneratorBundle
  *
- * (c) Fabien Potencier <fabien@symfony.com>
+ * It is based/extended from SensioGeneratorBundle
+ *
+ * (c) Jordi Llonch <llonch.jordi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -86,5 +88,20 @@ class JordiLlonchCrudCommand extends GenerateDoctrineCrudCommand
         }
 
         return $this->formFilterGenerator;
+    }
+
+    /**
+     * It is copied here because $this->generator it is a private variable on parent
+     * class and I created here as a protected varible.
+     * Without this method here, tests are not working.
+     */
+    public function setGenerator(DoctrineCrudGenerator $generator)
+    {
+        $this->generator = $generator;
+    }
+
+    public function setFormFilterGenerator(DoctrineFormFilterGenerator $formFilterGenerator)
+    {
+        $this->formFilterGenerator = $formFilterGenerator;
     }
 }

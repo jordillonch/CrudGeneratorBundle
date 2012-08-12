@@ -1,7 +1,11 @@
 <?php
 
 /*
- * This file is based in DoctrineFormGenerator.
+ * This file is part of the CrudGeneratorBundle
+ *
+ * It is based/extended from SensioGeneratorBundle
+ *
+ * (c) Jordi Llonch <llonch.jordi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -133,12 +137,6 @@ class DoctrineFormFilterGenerator extends Generator
     private function getFieldsDataFromMetadata(ClassMetadataInfo $metadata)
     {
         $fieldsData = (array) $metadata->fieldMappings;
-
-        foreach ($metadata->associationMappings as $fieldName => $relation) {
-            if ($relation['type'] !== ClassMetadataInfo::ONE_TO_MANY) {
-                $fieldsData[] = $fieldName;
-            }
-        }
 
         // Convert type to filter widget
         foreach ($fieldsData as $fieldName => $data) {
