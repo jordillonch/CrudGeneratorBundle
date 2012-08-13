@@ -6,6 +6,9 @@ This bundle is inspired in an article wrote by Ricard Clau: [Extending SensioGen
 
 **WARNING: It is an alpha version**
 
+[![Build Status](https://secure.travis-ci.org/jordillonch/CrudGeneratorBundle.png?branch=master)](http://travis-ci.org/jordillonch/CrudGeneratorBundle)
+
+
 ## Screenshot
 
 ![Screenshot](https://raw.github.com/jordillonch/CrudGeneratorBundle/master/screenshot.png "Screenshot")
