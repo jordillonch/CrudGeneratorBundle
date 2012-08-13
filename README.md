@@ -22,9 +22,6 @@ Well, because CRUD generator creates simple code, no magic, no configuration fil
 
 Add following lines to your `composer.json` file:
 
-    "sensio/generator-bundle": "dev-master",
-    "pagerfanta/pagerfanta": "dev-master",
-    "lexik/form-filter-bundle": "dev-master",
     "jordillonch/crud-generator": "dev-master"
 
 Execute:
