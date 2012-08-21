@@ -1,7 +1,7 @@
 {{ "{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}" }}
 
 {{ "{% block title %}" }}
-{{ "{{ parent() }} - " ~ entity ~ " List" }}
+{{ "{{ parent() }} - " ~ entity ~ " {{ 'views.index.list'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}
 {{ "{% endblock %}" }}
 
 {{ "{% block page %}" }}
@@ -9,7 +9,7 @@
 <div class="row">
 
     <div class="span9">
-        <h1>{{ entity }} list</h1>
+        <h1>{{ entity }} {{ "{{ 'views.index.list'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}</h1>
     </div>
     <div class="span2">
         {{ '{% if form_errors(filterForm) %}' }}
@@ -21,7 +21,7 @@
     </div>
     <div class="span1">
         <a class="btn dropdown-toggle" data-toggle="collapse" data-target="#filters">
-            Filters
+            {{ "{{ 'views.index.filters'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}
             <span class="caret"></span>
         </a>
     </div>
@@ -40,8 +40,8 @@
                 {{ "{{ form_rest(filterForm) }}" }}
 
                 <p>
-                    <button type="submit" name="filter_action" value="reset">Reset</button>
-                    <button type="submit" name="filter_action" value="filter">Filter</button>
+                    <button type="submit" name="filter_action" value="reset">{{ "{{ 'views.index.reset'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}</button>
+                    <button type="submit" name="filter_action" value="filter">{{ "{{ 'views.index.filter'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}</button>
                 </p>
             </form>
         </div>
@@ -58,7 +58,7 @@
 
         {%- endfor %}
 
-            <th>Actions</th>
+            <th>{{ "{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}</th>
         </tr>
     </thead>
     <tbody>
@@ -102,7 +102,7 @@
     {% if 'new' in actions %}
     <div class="span8">
     <a class="btn likepaginator" href="{{ "{{ path('"~ route_name_prefix ~"_new') }}" }}">
-            Create a new entry
+            {{ "{{ 'views.index.createnew'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }} {{ entity }}
         </a>
     </div>
 {% endif %}
