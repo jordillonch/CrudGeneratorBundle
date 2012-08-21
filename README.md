@@ -72,11 +72,11 @@ from previous generation.
 
 ## Author
 
-Jordi Llonch <llonch.jordi at gmail dot com>
+Jordi Llonch - llonch.jordi at gmail dot com
 
 ### Translation support
 
-Gonzalo Alonso <gonkpo at gmail dot com>
+Gonzalo Alonso - gonkpo at gmail dot com
 
 
 ## License
