@@ -1,6 +1,6 @@
 # CrudGeneratorBundle
 
-This Symfony2 bundle aims to be the bundle that you are looking for create a nice CRUD with pagination, filter and transaltion features.
+This Symfony2 bundle aims to be the bundle that you are looking for create a nice CRUD with pagination, filter, translation and Twitter bootstrap 2.1 features.
 
 This bundle is inspired in an article wrote by Ricard Clau: [Extending SensioGeneratorBundle for our Admin Areas](http://www.ricardclau.com/2012/03/extending-sensiogeneratorbundle-for-our-admin-areas/)
 

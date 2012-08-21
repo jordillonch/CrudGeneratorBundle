@@ -8,7 +8,7 @@
 
 <div class="row">
 
-    <div class="span9">
+    <div class="span8">
         <h1>{{ entity }} {{ "{{ 'views.index.list'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}</h1>
     </div>
     <div class="span2">
@@ -19,11 +19,13 @@
         {{ '{% endif %}' }}
         &nbsp;
     </div>
-    <div class="span1">
-        <a class="btn dropdown-toggle" data-toggle="collapse" data-target="#filters">
-            {{ "{{ 'views.index.filters'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}
-            <span class="caret"></span>
-        </a>
+    <div class="span2">
+        <div class="filters-right">
+            <a class="btn dropdown-toggle" data-toggle="collapse" data-target="#filters">
+                {{ "{{ 'views.index.filters'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}
+                <span class="caret"></span>
+            </a>
+        </div>
     </div>
 
     <div class="span12">
