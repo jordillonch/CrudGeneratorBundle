@@ -1,0 +1,25 @@
+views:
+    layout:
+        bannersadmin: Administrador
+    index:
+        filters: Filtros
+        filter: Filtrar
+        reset: Limpiar
+        list: lista
+        actions: Acciones
+        createnew: Crear
+    actions:
+        show: ver
+        edit: editar
+    recordactions:
+        backtothelist: Volver a la lista
+        edit: Editar
+        delete: Eliminar
+    new:
+        creation: crear
+        create: Crear
+    edit:
+        edit: editar
+        editbutton: Editar
+    show:
+        show: ver

@@ -1,7 +1,7 @@
 {{ "{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}" }}
 
 {{ "{% block title %}" }}
-{{ "{{ parent() }} - " ~ entity ~ " List" }}
+{{ "{{ parent() }} - " ~ entity ~ " {{ 'views.show.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}
 {{ "{% endblock %}" }}
 
 {{ "{% block page %}" }}

@@ -1,17 +1,17 @@
 {{ "{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}" }}
 
 {{ "{% block title %}" }}
-{{ "{{ parent() }} - " ~ entity ~ " List" }}
+{{ "{{ parent() }} - " ~ entity ~ " {{ 'views.new.creation'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}
 {{ "{% endblock %}" }}
 
 {{ "{% block page %}" }}
 
-<h1>{{ entity }} creation</h1>
+<h1>{{ entity }} {{ "{{ 'views.new.creation'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}</h1>
 
 <form class="well" action="{{ "{{ path('"~ route_name_prefix ~"_create') }}" }}" method="post" {{ "{{ form_enctype(form) }}" }}>
     {{ "{{ form_widget(form) }}" }}
     <p>
-        <button type="submit">Create</button>
+        <button type="submit">{{ "{{ 'views.new.create'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}</button>
     </p>
 </form>
 
