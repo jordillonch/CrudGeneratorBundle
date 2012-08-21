@@ -8,6 +8,8 @@ views:
         list: list
         actions: Actions
         createnew: Create a new
+        pagprev: '&larr; Previous'
+        pagnext: 'Next &rarr;'
     actions:
         show: show
         edit: edit
