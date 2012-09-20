@@ -15,3 +15,9 @@
 .form-errors > ul {
     list-style: none;
 }
+form.well ul li {
+    border-radius: 3px 3px 3px 3px;
+    padding: 1px 4px 2px;
+    color: #FFFFFF;
+    background-color: #B94A48;
+}

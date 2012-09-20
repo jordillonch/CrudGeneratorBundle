@@ -103,11 +103,11 @@
 
     {% if 'new' in actions %}
     <div class="span8">
-    <a class="btn likepaginator" href="{{ "{{ path('"~ route_name_prefix ~"_new') }}" }}">
+    <a class="btn btn-primary likepaginator" href="{{ "{{ path('"~ route_name_prefix ~"_new') }}" }}">
             {{ "{{ 'views.index.createnew'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }} {{ entity }}
         </a>
     </div>
-{% endif %}
+    {% endif %}
 </div>
 
 {{ "{% endblock %}" }}

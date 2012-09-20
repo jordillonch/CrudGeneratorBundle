@@ -25,3 +25,13 @@ views:
         editbutton: Editar
     show:
         show: ver
+flash:
+    create:
+        success: Elemento creado satisfactoriamente.
+        error: Se ha producido un error durante la creación del elemento.
+    update:
+        success: Elemento actualizado satisfactoriamente.
+        error: Se ha producido un error durante la actualización del elemento.
+    delete:
+        success: Elemento eliminado satisfactoriamente.
+        error: Se ha producido un error durante la eliminación del elemento.
