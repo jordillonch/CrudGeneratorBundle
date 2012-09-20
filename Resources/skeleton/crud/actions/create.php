@@ -19,13 +19,15 @@
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+            $this->get('session')->getFlashBag()->add('success', 'flash.create.success');
 
             {% if 'show' in actions -%}
                 return $this->redirect($this->generateUrl('{{ route_name_prefix }}_show', array('id' => $entity->getId())));
             {%- else -%}
                 return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
             {%- endif %}
-
+        } else {
+            $this->get('session')->getFlashBag()->add('error', 'flash.create.error');
         }
 
 {% if 'annotation' == format %}

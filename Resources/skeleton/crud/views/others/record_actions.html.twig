@@ -6,7 +6,7 @@
     </div>
 {% if ('edit' in actions) and (not hide_edit) %}
     <div class="float-left">
-        <a class="btn" href="{{ "{{ path('"~ route_name_prefix ~"_edit', { 'id': entity.id }) }}" }}">
+        <a class="btn btn-primary" href="{{ "{{ path('"~ route_name_prefix ~"_edit', { 'id': entity.id }) }}" }}">
             {{ "{{ 'views.recordactions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}
         </a>
     </div>
@@ -15,7 +15,7 @@
     <div class="float-left">
         <form action="{{ "{{ path('"~ route_name_prefix ~"_delete', { 'id': entity.id }) }}" }}" method="post">
             {{ '{{ form_widget(delete_form) }}' }}
-            <button class="btn btn-danger" type="submit">{{ "{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}</button>
+            <button class="btn btn-danger" type="submit" onclick="return confirm('Desea eliminar al proyecto del sistema?');">{{ "{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}</button>
         </form>
     </div>
 {% endif %}

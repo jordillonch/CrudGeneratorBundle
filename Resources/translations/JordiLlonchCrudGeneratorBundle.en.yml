@@ -25,3 +25,13 @@ views:
         editbutton: Edit
     show:
         show: show
+flash:
+    create:
+        success: Item has been successfully created.
+        error: An error has occurred during item creation.
+    update:
+        success: Item has been successfully updated.
+        error: An error has occurred during item update.
+    delete:
+        success: Item has been deleted successfully.
+        error: An Error has occurred during item deletion.

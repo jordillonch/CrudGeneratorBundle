@@ -24,6 +24,9 @@
 
             $em->remove($entity);
             $em->flush();
+            $this->get('session')->getFlashBag()->add('success', 'flash.delete.success');
+        } else {
+            $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
 
         return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
