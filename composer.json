@@ -17,14 +17,14 @@
         "pagerfanta/pagerfanta": "dev-master",
         "lexik/form-filter-bundle": "dev-master"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "autoload": {
         "psr-0": { "JordiLlonch\\Bundle\\CrudGeneratorBundle": "" }
     },
     "target-dir": "JordiLlonch/Bundle/CrudGeneratorBundle",
     "extra": {
         "branch-alias": {
-            "dev-master": "2.1.*"
+            "dev-master": "2.1.x-dev"
         }
     }
 }
