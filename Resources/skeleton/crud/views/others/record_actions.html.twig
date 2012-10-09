@@ -15,7 +15,7 @@
     <div class="float-left">
         <form action="{{ "{{ path('"~ route_name_prefix ~"_delete', { 'id': entity.id }) }}" }}" method="post">
             {{ '{{ form_widget(delete_form) }}' }}
-            <button class="btn btn-danger" type="submit" onclick="return confirm('Desea eliminar al proyecto del sistema?');">{{ "{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}</button>
+            <button class="btn btn-danger" type="submit" onclick="return confirm('{{ "{{ 'views.recordactions.confirm'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}');">{{ "{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}</button>
         </form>
     </div>
 {% endif %}
