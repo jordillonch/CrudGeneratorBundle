@@ -17,6 +17,7 @@ views:
         backtothelist: Volver a la lista
         edit: Editar
         delete: Eliminar
+        confirm: Eliminar el elemento?
     new:
         creation: crear
         create: Crear
