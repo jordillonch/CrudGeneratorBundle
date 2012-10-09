@@ -12,8 +12,8 @@
         }
     ],
     "require": {
-        "symfony/symfony": "2.1.*",
-        "sensio/generator-bundle": "2.1.*",
+        "symfony/symfony": "2.1.x-dev",
+        "sensio/generator-bundle": "2.1.x-dev",
         "pagerfanta/pagerfanta": "dev-master",
         "lexik/form-filter-bundle": "dev-master"
     },
