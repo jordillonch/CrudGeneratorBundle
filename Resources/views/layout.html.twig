@@ -29,6 +29,7 @@
 <body>
 
 <div class="container">
+    {% block menu %}{% endblock %}
 
     {% for type, flashMessages in app.session.flashbag.all() %}
         {% for flashMessage in flashMessages %}
