@@ -1,6 +1,6 @@
 views:
     layout:
-        bannersadmin: Banners Admin
+        bannersadmin: Administrator
     index:
         filters: Filters
         filter: Filter
