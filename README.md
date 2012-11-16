@@ -13,7 +13,6 @@ This bundle is inspired in an article wrote by Ricard Clau: [Extending SensioGen
 
 ![Screenshot](https://raw.github.com/jordillonch/CrudGeneratorBundle/master/screenshot.png "Screenshot")
 
-
 ## Why use a CRUD generator?
 
 Well, because CRUD generator creates simple code, no magic, no configuration files, just simple and plain code that you can extend and modify easily.
