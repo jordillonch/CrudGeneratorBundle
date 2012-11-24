@@ -55,7 +55,6 @@ Add it to your `app/config.yml`
 This bundle extends [SensioGeneratorBundle](https://github.com/sensio/SensioGeneratorBundle) and add a paginator using [PagerFanta](https://github.com/whiteoctober/Pagerfanta/) and filter
 support using [LexikFormFilterBundle](https://github.com/lexik/LexikFormFilterBundle).
 
-
 ## Usage
 
 Use following command from console:
@@ -68,7 +67,6 @@ are free to modify the code because there is no magic just a simple code that is
 You have to know that if you reuse the command to recreate same entity, first you must delete controller and form files
 from previous generation.
 
-
 ## Author
 
 Jordi Llonch - llonch.jordi at gmail dot com
@@ -76,7 +74,6 @@ Jordi Llonch - llonch.jordi at gmail dot com
 ### Translation support
 
 Gonzalo Alonso - gonkpo at gmail dot com
-
 
 ## License
 
