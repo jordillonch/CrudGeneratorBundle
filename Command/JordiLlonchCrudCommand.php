@@ -63,15 +63,21 @@ class JordiLlonchCrudCommand extends GenerateDoctrineCrudCommand
         parent::interact($input, $output);
     }
 
-    protected function getGenerator()
+  protected function getGenerator()
     {
+
+        $myResdir =$this->getContainer()->getParameter('kernel.root_dir');
         if (null === $this->generator) {
-            $this->generator = new DoctrineCrudGenerator($this->getContainer()->get('filesystem'), __DIR__.'/../Resources/skeleton/crud');
+            if (file_exists($myResdir.'/Resources/JordiLlonchCrudGeneratorBundle/skeleton/crud')) {
+                $this->generator = new DoctrineCrudGenerator($this->getContainer()->get('filesystem'), $myResdir.'/Resources/JordiLlonchCrudGeneratorBundle/skeleton/crud');
+            }else{
+                $this->generator = new DoctrineCrudGenerator($this->getContainer()->get('filesystem'), __DIR__.'/../Resources/skeleton/crud');
+            }
+
         }
 
         return $this->generator;
     }
-
     protected function getFormGenerator()
     {
         if (null === $this->formGenerator) {
