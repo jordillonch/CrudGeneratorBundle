@@ -16,8 +16,8 @@ use Pagerfanta\View\TwitterBootstrapView;
 use {{ namespace }}\Entity\{{ entity }};
 {% if 'new' in actions or 'edit' in actions %}
 use {{ namespace }}\Form\{{ entity }}Type;
-use {{ namespace }}\Form\{{ entity }}FilterType;
 {% endif %}
+use {{ namespace }}\Form\{{ entity }}FilterType;
 
 /**
  * {{ entity }} controller.
