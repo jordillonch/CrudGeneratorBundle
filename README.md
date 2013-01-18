@@ -24,7 +24,12 @@ Well, because CRUD generator creates simple code, no magic, no configuration fil
 
 Add following lines to your `composer.json` file:
 
-    "jordillonch/crud-generator": "dev-master"
+    "require": {
+      ...
+      "jordillonch/crud-generator": "dev-master"
+    },
+    "minimum-stability": "dev"
+
 
 Execute:
 
