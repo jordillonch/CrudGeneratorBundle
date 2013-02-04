@@ -74,7 +74,7 @@ class DoctrineFormFilterGenerator extends Generator
         $parts = explode('\\', $entity);
         array_pop($parts);
 
-        $this->renderFile($this->skeletonDir, 'FormFilterType.php', $this->classPath, array(
+        $this->renderFile($this->skeletonDir, 'FormFilterType.php.twig', $this->classPath, array(
             'dir'              => $this->skeletonDir,
             'fields_data'      => $this->getFieldsDataFromMetadata($metadata),
             'namespace'        => $bundle->getNamespace(),

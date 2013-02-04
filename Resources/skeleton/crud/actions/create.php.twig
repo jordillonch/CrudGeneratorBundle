@@ -3,16 +3,15 @@
      * Creates a new {{ entity }} entity.
      *
 {% if 'annotation' == format %}
-     * @Route("/create", name="{{ route_name_prefix }}_create")
-     * @Method("post")
+     * @Route("/", name="{{ route_name_prefix }}_create")
+     * @Method("POST")
      * @Template("{{ bundle }}:{{ entity }}:new.html.twig")
 {% endif %}
      */
-    public function createAction()
+    public function createAction(Request $request)
     {
         $entity  = new {{ entity_class }}();
-        $request = $this->getRequest();
-        $form    = $this->createForm(new {{ entity_class }}Type(), $entity);
+        $form = $this->createForm(new {{ entity_class }}Type(), $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -26,8 +25,7 @@
             {%- else -%}
                 return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
             {%- endif %}
-        } else {
-            $this->get('session')->getFlashBag()->add('error', 'flash.create.error');
+
         }
 
 {% if 'annotation' == format %}

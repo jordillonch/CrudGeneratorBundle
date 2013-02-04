@@ -12,10 +12,10 @@
         }
     ],
     "require": {
-        "symfony/symfony": "2.1.*",
-        "sensio/generator-bundle": "2.1.*",
+        "symfony/symfony": ">=2.1.0-dev",
+        "sensio/generator-bundle": ">=2.1.0-dev",
         "pagerfanta/pagerfanta": "dev-master",
-        "lexik/form-filter-bundle": "dev-master"
+        "lexik/form-filter-bundle": "dev-regroup_constants"
     },
     "minimum-stability": "dev",
     "autoload": {
@@ -24,7 +24,7 @@
     "target-dir": "JordiLlonch/Bundle/CrudGeneratorBundle",
     "extra": {
         "branch-alias": {
-            "dev-master": "2.1.x-dev"
+            "dev-master": ">=2.1.0-dev"
         }
     }
 }

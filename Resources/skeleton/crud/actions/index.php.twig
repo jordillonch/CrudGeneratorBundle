@@ -4,6 +4,7 @@
      *
 {% if 'annotation' == format %}
      * @Route("/", name="{{ route_name_prefix }}")
+     * @Method("GET")
      * @Template()
 {% endif %}
      */
@@ -13,22 +14,20 @@
 
         list($entities, $pagerHtml) = $this->paginator($queryBuilder);
 
-    {% if 'annotation' == format %}
-
+{% if 'annotation' == format %}
         return array(
             'entities' => $entities,
             'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
         );
-    {% else %}
-
+{% else %}
         return $this->render('{{ bundle }}:{{ entity|replace({'\\': '/'}) }}:index.html.twig', array(
             'entities' => $entities,
             'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
         ));
-    {% endif %}
-}
+{% endif %}
+    }
 
     /**
     * Create filter form and process filter request.
@@ -41,12 +40,12 @@
         $filterForm = $this->createForm(new {{ entity }}FilterType());
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('{{ bundle }}:{{ entity }}')->createQueryBuilder('e');
-    
+
         // Reset filter
         if ($request->getMethod() == 'POST' && $request->get('filter_action') == 'reset') {
             $session->remove('{{ entity }}ControllerFilter');
         }
-    
+
         // Filter action
         if ($request->getMethod() == 'POST' && $request->get('filter_action') == 'filter') {
             // Bind values from the request
@@ -67,7 +66,7 @@
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
             }
         }
-    
+
         return array($filterForm, $queryBuilder);
     }
 
@@ -83,14 +82,14 @@
         $currentPage = $this->getRequest()->get('page', 1);
         $pagerfanta->setCurrentPage($currentPage);
         $entities = $pagerfanta->getCurrentPageResults();
-    
+
         // Paginator - route generator
         $me = $this;
         $routeGenerator = function($page) use ($me)
         {
             return $me->generateUrl('{{ route_name_prefix }}', array('page' => $page));
         };
-    
+
         // Paginator - view
         $translator = $this->get('translator');
         $view = new TwitterBootstrapView();
@@ -99,7 +98,6 @@
             'prev_message' => $translator->trans('views.index.pagprev', array(), 'JordiLlonchCrudGeneratorBundle'),
             'next_message' => $translator->trans('views.index.pagnext', array(), 'JordiLlonchCrudGeneratorBundle'),
         ));
-    
+
         return array($entities, $pagerHtml);
     }
-    

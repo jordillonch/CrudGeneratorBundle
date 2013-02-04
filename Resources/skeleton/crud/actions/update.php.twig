@@ -1,13 +1,14 @@
 
     /**
-     * Displays a form to edit an existing {{ entity }} entity.
+     * Edits an existing {{ entity }} entity.
      *
 {% if 'annotation' == format %}
-     * @Route("/{id}/edit", name="{{ route_name_prefix }}_edit")
-     * @Template()
+     * @Route("/{id}", name="{{ route_name_prefix }}_update")
+     * @Method("PUT")
+     * @Template("{{ bundle }}:{{ entity }}:edit.html.twig")
 {% endif %}
      */
-    public function editAction($id)
+    public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -17,8 +18,19 @@
             throw $this->createNotFoundException('Unable to find {{ entity }} entity.');
         }
 
-        $editForm = $this->createForm(new {{ entity_class }}Type(), $entity);
         $deleteForm = $this->createDeleteForm($id);
+        $editForm = $this->createForm(new {{ entity_class }}Type(), $entity);
+        $editForm->bind($request);
+
+        if ($editForm->isValid()) {
+            $em->persist($entity);
+            $em->flush();
+            $this->get('session')->getFlashBag()->add('success', 'flash.update.success');
+
+            return $this->redirect($this->generateUrl('{{ route_name_prefix }}_edit', array('id' => $id)));
+        } else {
+            $this->get('session')->getFlashBag()->add('error', 'flash.update.error');
+        }
 
 {% if 'annotation' == format %}
         return array(

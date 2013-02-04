@@ -1,10 +1,8 @@
 # CrudGeneratorBundle
 
-This Symfony2 bundle aims to be the bundle that you are looking for create a nice CRUD with pagination, filter, translation and Twitter bootstrap 2.1 features.
+This Symfony2 bundle aims to be the bundle that you are looking for create a nice CRUD with pagination, filter, translation and Twitter bootstrap 2.2.2 features.
 
 This bundle is inspired in an article wrote by Ricard Clau: [Extending SensioGeneratorBundle for our Admin Areas](http://www.ricardclau.com/2012/03/extending-sensiogeneratorbundle-for-our-admin-areas/)
-
-**WARNING: It is an alpha version**
 
 [![Build Status](https://secure.travis-ci.org/jordillonch/CrudGeneratorBundle.png?branch=master)](http://travis-ci.org/jordillonch/CrudGeneratorBundle)
 
@@ -24,12 +22,13 @@ Well, because CRUD generator creates simple code, no magic, no configuration fil
 
 Add following lines to your `composer.json` file:
 
-    "require": {
-      ...
-      "jordillonch/crud-generator": "dev-master"
-    },
-    "minimum-stability": "dev"
+#### Symfony 2.2
 
+    "jordillonch/crud-generator": "dev-master"
+
+#### Symfony 2.1
+
+    "jordillonch/crud-generator": "2.1.x-dev"
 
 Execute:
 
@@ -44,15 +43,17 @@ and:
 
     $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
 
-Add it to your `app/config.yml`
+Add it to your `app/config/config.yml`
 
-    # app/config.yml
+    framework:
+        translator: { fallback: en }
+
     twig:
         form:
             resources:
                 - LexikFormFilterBundle:Form:form_div_layout.html.twig
 
-**This bundle only works with Symfony 2.1 version.**
+**This bundle only works with Symfony 2.1 and 2.2 version.**
 
 
 ## Dependencies
