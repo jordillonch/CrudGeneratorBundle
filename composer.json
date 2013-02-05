@@ -12,8 +12,8 @@
         }
     ],
     "require": {
-        "symfony/symfony": ">=2.1.0-dev",
-        "sensio/generator-bundle": ">=2.1.0-dev",
+        "symfony/symfony": "2.2.*",
+        "sensio/generator-bundle": "2.2.*",
         "pagerfanta/pagerfanta": "dev-master",
         "lexik/form-filter-bundle": "dev-regroup_constants"
     },

@@ -25,28 +25,182 @@ class JordiLlonchCrudGeneratorTest extends DoctrineCrudGeneratorTest
 
     public function testGenerateYamlFull()
     {
-        parent::testGenerateYamlFull();
+        // BEGIN: parent::testGenerateYamlFull();
+        $this->getGenerator()->generate($this->getBundle(), 'Post', $this->getMetadata(), 'yml', '/post', true, false);
+
+        $files = array(
+            'Controller/PostController.php',
+            'Tests/Controller/PostControllerTest.php',
+            'Resources/config/routing/post.yml',
+            'Resources/views/Post/index.html.twig',
+            'Resources/views/Post/show.html.twig',
+            'Resources/views/Post/new.html.twig',
+            'Resources/views/Post/edit.html.twig',
+        );
+        foreach ($files as $file) {
+            $this->assertTrue(file_exists($this->tmpDir.'/'.$file), sprintf('%s has been generated', $file));
+        }
+
+        $files = array(
+            'Resources/config/routing/post.xml',
+        );
+        foreach ($files as $file) {
+            $this->assertFalse(file_exists($this->tmpDir.'/'.$file), sprintf('%s has not been generated', $file));
+        }
+
+        $content = file_get_contents($this->tmpDir.'/Controller/PostController.php');
+        $strings = array(
+            'namespace Foo\BarBundle\Controller;',
+            'public function indexAction',
+            'public function showAction',
+            'public function newAction',
+            'public function editAction',
+        );
+        foreach ($strings as $string) {
+            $this->assertContains($string, $content);
+        }
+        // END
+
 
         $this->assertFilterAndPaginator();
     }
 
     public function testGenerateXml()
     {
-        parent::testGenerateXml();
+        // BEGIN: parent::testGenerateXml();
+        $this->getGenerator()->generate($this->getBundle(), 'Post', $this->getMetadata(), 'xml', '/post', false, false);
+
+        $files = array(
+            'Controller/PostController.php',
+            'Tests/Controller/PostControllerTest.php',
+            'Resources/config/routing/post.xml',
+            'Resources/views/Post/index.html.twig',
+            'Resources/views/Post/show.html.twig',
+        );
+        foreach ($files as $file) {
+            $this->assertTrue(file_exists($this->tmpDir.'/'.$file), sprintf('%s has been generated', $file));
+        }
+
+        $files = array(
+            'Resources/config/routing/post.yml',
+            'Resources/views/Post/new.html.twig',
+            'Resources/views/Post/edit.html.twig',
+        );
+        foreach ($files as $file) {
+            $this->assertFalse(file_exists($this->tmpDir.'/'.$file), sprintf('%s has not been generated', $file));
+        }
+
+        $content = file_get_contents($this->tmpDir.'/Controller/PostController.php');
+        $strings = array(
+            'namespace Foo\BarBundle\Controller;',
+            'public function indexAction',
+            'public function showAction',
+        );
+        foreach ($strings as $string) {
+            $this->assertContains($string, $content);
+        }
+
+        $content = file_get_contents($this->tmpDir.'/Controller/PostController.php');
+        $strings = array(
+            'public function newAction',
+            'public function editAction',
+            '@Route',
+        );
+        foreach ($strings as $string) {
+            $this->assertNotContains($string, $content);
+        }
+        // END
 
         $this->assertFilterAndPaginator();
     }
 
     public function testGenerateAnnotationWrite()
     {
-        parent::testGenerateAnnotationWrite();
+        // BEGIN: parent::testGenerateAnnotationWrite();
+        $this->getGenerator()->generate($this->getBundle(), 'Post', $this->getMetadata(), 'annotation', '/post', true, false);
+
+        $files = array(
+            'Controller/PostController.php',
+            'Tests/Controller/PostControllerTest.php',
+            'Resources/views/Post/index.html.twig',
+            'Resources/views/Post/show.html.twig',
+            'Resources/views/Post/new.html.twig',
+            'Resources/views/Post/edit.html.twig',
+        );
+        foreach ($files as $file) {
+            $this->assertTrue(file_exists($this->tmpDir.'/'.$file), sprintf('%s has been generated', $file));
+        }
+
+        $files = array(
+            'Resources/config/routing/post.yml',
+            'Resources/config/routing/post.xml',
+        );
+        foreach ($files as $file) {
+            $this->assertFalse(file_exists($this->tmpDir.'/'.$file), sprintf('%s has not been generated', $file));
+        }
+
+        $content = file_get_contents($this->tmpDir.'/Controller/PostController.php');
+        $strings = array(
+            'namespace Foo\BarBundle\Controller;',
+            'public function indexAction',
+            'public function showAction',
+            'public function newAction',
+            'public function editAction',
+            '@Route',
+        );
+        foreach ($strings as $string) {
+            $this->assertContains($string, $content);
+        }
+        // END
 
         $this->assertFilterAndPaginator();
     }
 
     public function testGenerateAnnotation()
     {
-        parent::testGenerateAnnotation();
+        // BEGIN: parent::testGenerateAnnotation();
+        $this->getGenerator()->generate($this->getBundle(), 'Post', $this->getMetadata(), 'annotation', '/post', false, false);
+
+        $files = array(
+            'Controller/PostController.php',
+            'Tests/Controller/PostControllerTest.php',
+            'Resources/views/Post/index.html.twig',
+            'Resources/views/Post/show.html.twig',
+        );
+        foreach ($files as $file) {
+            $this->assertTrue(file_exists($this->tmpDir.'/'.$file), sprintf('%s has been generated', $file));
+        }
+
+        $files = array(
+            'Resources/config/routing/post.yml',
+            'Resources/config/routing/post.xml',
+            'Resources/views/Post/new.html.twig',
+            'Resources/views/Post/edit.html.twig',
+        );
+        foreach ($files as $file) {
+            $this->assertFalse(file_exists($this->tmpDir.'/'.$file), sprintf('%s has not been generated', $file));
+        }
+
+        $content = file_get_contents($this->tmpDir.'/Controller/PostController.php');
+        $strings = array(
+            'namespace Foo\BarBundle\Controller;',
+            'public function indexAction',
+            'public function showAction',
+            '@Route',
+        );
+        foreach ($strings as $string) {
+            $this->assertContains($string, $content);
+        }
+
+        $content = file_get_contents($this->tmpDir.'/Controller/PostController.php');
+        $strings = array(
+            'public function newAction',
+            'public function editAction',
+        );
+        foreach ($strings as $string) {
+            $this->assertNotContains($string, $content);
+        }
+        // END
 
         $this->assertFilterAndPaginator();
     }
