@@ -15,7 +15,7 @@
         "symfony/symfony": "2.2.*",
         "sensio/generator-bundle": "2.2.*",
         "pagerfanta/pagerfanta": "dev-master",
-        "lexik/form-filter-bundle": "dev-regroup_constants"
+        "lexik/form-filter-bundle": "dev-master"
     },
     "minimum-stability": "dev",
     "autoload": {
