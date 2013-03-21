@@ -14,10 +14,10 @@
     "require": {
         "symfony/symfony": "2.2.*",
         "sensio/generator-bundle": "2.2.*",
-        "pagerfanta/pagerfanta": "dev-master",
-        "lexik/form-filter-bundle": "dev-master"
+        "pagerfanta/pagerfanta": "1.0.*@dev",
+        "lexik/form-filter-bundle": "1.2.*"
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "autoload": {
         "psr-0": { "JordiLlonch\\Bundle\\CrudGeneratorBundle": "" }
     },
