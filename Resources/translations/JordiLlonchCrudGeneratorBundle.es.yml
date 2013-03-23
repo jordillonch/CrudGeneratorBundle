@@ -5,7 +5,7 @@ views:
         filters: Filtros
         filter: Filtrar
         reset: Limpiar
-        list: lista
+        list: %entity%: lista
         actions: Acciones
         createnew: Crear
         pagprev: '&larr; Anterior'
@@ -19,13 +19,13 @@ views:
         delete: Eliminar
         confirm: Eliminar el elemento?
     new:
-        creation: crear
+        creation: Crear %entity%
         create: Crear
     edit:
-        edit: editar
+        edit: Editar %entity%
         editbutton: Editar
     show:
-        show: ver
+        show: Ver %entity%
 flash:
     create:
         success: Elemento creado satisfactoriamente.
