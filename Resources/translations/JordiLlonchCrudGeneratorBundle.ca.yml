@@ -5,7 +5,7 @@ views:
         filters: Filtres
         filter: Filtrar
         reset: Netejar
-        list: llista
+        list: %entity%: llista
         actions: Accions
         createnew: Crear
         pagprev: '&larr; Anterior'
@@ -19,20 +19,20 @@ views:
         delete: Eliminar
         confirm: Eliminar l'element?
     new:
-        creation: crear
+        creation: Crear %entity%
         create: Crear
     edit:
-        edit: editar
+        edit: Editar %entity%
         editbutton: Editar
     show:
-        show: veure
+        show: Veure %entity%
 flash:
     create:
         success: Element creat satisfactòriament.
         error: Hi ha hagut un error durant la creació de l'element.
     update:
-        success: Elemento actualitzat satisfactòriament.
+        success: Element actualitzat satisfactòriament.
         error: Hi ha hagut un error durant l'actualització de l'element.
     delete:
-        success: Elemento eliminat satisfactòriamente.
-        error: Hi ha hagut un error durante l'eliminació de l'element.
+        success: Element eliminat satisfactòriament.
+        error: Hi ha hagut un error durant l'eliminació de l'element.
