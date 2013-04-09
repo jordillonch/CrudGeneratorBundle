@@ -1,0 +1,22 @@
+<div>
+    <div class="float-left">
+        <a class="btn" href="{{ "{{ path('"~ route_name_prefix ~"') }}" }}">
+            {{ "{{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}
+        </a>
+    </div>
+{% if ('edit' in actions) and (not hide_edit) %}
+    <div class="float-left">
+        <a class="btn btn-primary" href="{{ "{{ path('"~ route_name_prefix ~"_edit', { 'id': entity.id }) }}" }}">
+            {{ "{{ 'views.recordactions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}
+        </a>
+    </div>
+{% endif %}
+{% if ('delete' in actions) and (not hide_delete) %}
+    <div class="float-left">
+        <form action="{{ "{{ path('"~ route_name_prefix ~"_delete', { 'id': entity.id }) }}" }}" method="post">
+            {{ '{{ form_widget(delete_form) }}' }}
+            <button class="btn btn-danger" type="submit" onclick="return confirm('{{ "{{ 'views.recordactions.confirm'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}');">{{ "{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}</button>
+        </form>
+    </div>
+{% endif %}
+</div>

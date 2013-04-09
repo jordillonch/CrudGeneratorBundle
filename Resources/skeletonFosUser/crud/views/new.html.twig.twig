@@ -1,0 +1,21 @@
+{{ "{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}" }}
+
+{{ "{% block title %}" }}
+{{ "{{ parent() }} - {{ 'views.new.creation'|trans({'%entity%': '" }}{{ entity }}{{ "'}, 'JordiLlonchCrudGeneratorBundle') }}" }}
+{{ "{% endblock %}" }}
+
+{{ "{% block page %}" }}
+
+<h1>{{ "{{ 'views.new.creation'|trans({'%entity%': '" }}{{ entity }}{{ "'}, 'JordiLlonchCrudGeneratorBundle') }}" }}</h1>
+
+<form class="well" action="{{ "{{ path('"~ route_name_prefix ~"_create') }}" }}" method="post" {{ "{{ form_enctype(form) }}" }}>
+    {{ "{{ form_widget(form) }}" }}
+    <p>
+        <button type="submit" class="btn btn-success">{{ "{{ 'views.new.create'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}</button>
+    </p>
+</form>
+
+{% set hide_edit, hide_delete = true, true %}
+{% include 'views/others/record_actions.html.twig.twig' %}
+
+{{ "{% endblock %}" }}

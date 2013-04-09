@@ -1,0 +1,21 @@
+{{ "{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}" }}
+
+{{ "{% block title %}" }}
+{{ "{{ parent() }} -  {{ 'views.edit.edit'|trans({'%entity%': '" }}{{ entity }}{{ "'}, 'JordiLlonchCrudGeneratorBundle') }}" }}
+{{ "{% endblock %}" }}
+
+{{ "{% block page %}" }}
+
+<h1>{{ "{{ 'views.edit.edit'|trans({'%entity%': '" }}{{ entity }}{{ "'}, 'JordiLlonchCrudGeneratorBundle') }}" }}</h1>
+
+<form class="well" action="{{ "{{ path('"~ route_name_prefix ~"_update', { 'id': entity.id }) }}" }}" method="post" {{ "{{ form_enctype(edit_form) }}" }}>
+    {{ "{{ form_widget(edit_form) }}" }}
+    <p>
+        <button type="submit" class="btn btn-success">{{ "{{ 'views.edit.editbutton'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}</button>
+    </p>
+</form>
+
+{% set hide_edit, hide_delete = true, false %}
+{% include 'views/others/record_actions.html.twig.twig' %}
+
+{{ "{% endblock %}" }}
