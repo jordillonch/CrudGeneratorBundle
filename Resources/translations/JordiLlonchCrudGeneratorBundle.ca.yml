@@ -26,6 +26,7 @@ views:
         editbutton: Editar
     show:
         show: Veure %entity%
+
 flash:
     create:
         success: Element creat satisfactòriament.
@@ -36,3 +37,6 @@ flash:
     delete:
         success: Element eliminat satisfactòriament.
         error: Hi ha hagut un error durant l'eliminació de l'element.
+
+ROLE_ADMIN: Administrador
+ROLE_USER: Usuari

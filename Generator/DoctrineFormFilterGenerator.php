@@ -140,7 +140,11 @@ class DoctrineFormFilterGenerator extends Generator
 
         // Convert type to filter widget
         foreach ($fieldsData as $fieldName => $data) {
-            $fieldsData[$fieldName]['filterWidget'] = $this->getFilterType($fieldsData[$fieldName]['type'], $fieldName);
+            if($fieldsData[$fieldName]['type'] != 'array'){
+                $fieldsData[$fieldName]['filterWidget'] = $this->getFilterType($fieldsData[$fieldName]['type'], $fieldName);
+            } else {
+                unset($fieldsData[$fieldName]);
+            }
         }
 
         return $fieldsData;

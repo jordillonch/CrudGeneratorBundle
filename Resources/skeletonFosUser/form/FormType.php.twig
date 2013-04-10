@@ -1,0 +1,46 @@
+<?php
+
+namespace {{ namespace }}\Form{{ entity_namespace ? '\\' ~ entity_namespace : '' }};
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+
+class {{ form_class }} extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        {% set fieldsIn = ['username', 'email', 'password', 'enabled', 'roles'] %}
+
+        $builder
+        {%- for field in fields if field in fieldsIn %}
+        {% if field == 'password' %}
+            ->add('{{ field }}', 'repeated', array(
+                'type' => 'password',
+                'invalid_message' => 'Los campos de contraseña deben coincidir.',
+                'options' => array('label' => 'Contraseña'),
+                'required' => false
+            ))
+        {% elseif field == 'roles' %}
+            ->add('{{ field }}', 'roles')
+        {% else %}
+            ->add('{{ field }}')
+        {% endif %}
+
+        {%- endfor %}
+
+        ;
+    }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => '{{ namespace }}\Entity{{ entity_namespace ? '\\' ~ entity_namespace : '' }}\{{ entity_class }}'
+        ));
+    }
+
+    public function getName()
+    {
+        return '{{ form_type_name }}';
+    }
+}

@@ -61,6 +61,26 @@ Add it to your `app/config/config.yml`
             resources:
                 - LexikFormFilterBundle:Form:form_div_layout.html.twig
 
+Generar crud FOSUserBundle
+
+Add it to your `app/config/config.yml`
+
+    services:
+        jordi_llonch_crud_generator.form.type.roles:
+            class: JordiLlonch\Bundle\CrudGeneratorBundle\Form\Type\RolesType
+            arguments:
+                - "%roles%"
+            tags:
+                - { name: form.type, alias: roles }
+
+Add it to your `app/config/parameters.yml` declare roles user
+
+    parameters:
+        #...
+        roles:
+            ROLE_ADMIN: ROLE_ADMIN
+            ROLE_USER: ROLE_USER
+
 **This bundle only works with Symfony 2.1 and 2.2 version.**
 
 
@@ -68,12 +88,15 @@ Add it to your `app/config/config.yml`
 
 This bundle extends [SensioGeneratorBundle](https://github.com/sensio/SensioGeneratorBundle) and add a paginator using [PagerFanta](https://github.com/whiteoctober/Pagerfanta/) and filter
 support using [LexikFormFilterBundle](https://github.com/lexik/LexikFormFilterBundle).
+For crudFosUser using [FOSUserBundle](https://github.com/FriendsOfSymfony/FOSUserBundle).
+
 
 ## Usage
 
 Use following command from console:
 
     app/console jordillonch:generate:crud
+    app/console jordillonch:generate:crudFosUser
 
 As you will see there is no config file. You will generate a CRUD code with all fields from your entity. But after code generation you
 are free to modify the code because there is no magic just a simple code that is very easy to understand.
@@ -85,7 +108,7 @@ from previous generation.
 
 Jordi Llonch - llonch.jordi at gmail dot com
 
-### Translation support
+### Development crudFosUser and Translation support
 
 Gonzalo Alonso - gonkpo at gmail dot com
 
