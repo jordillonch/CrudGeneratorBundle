@@ -13,7 +13,7 @@ class {{ form_class }} extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        {% set dataIn = ['username', 'email', 'enabled'] %}
+        {% set dataIn = ['username', 'email'] %}
 
         $builder
         {%- for data in fields_data if data.fieldName in dataIn %}

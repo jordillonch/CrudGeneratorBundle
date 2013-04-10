@@ -4,7 +4,7 @@
      *
 {% if 'annotation' == format %}
      * @Route("/{id}", name="{{ route_name_prefix }}_update")
-     * @Method("PUT")
+     * @Method("POST")
      * @Template("{{ bundle }}:{{ entity }}:edit.html.twig")
 {% endif %}
      */
@@ -18,16 +18,20 @@
             throw $this->createNotFoundException('Unable to find {{ entity }} entity.');
         }
 
+        $passwordCodificado = $entity->getPassword();
+
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new {{ entity_class }}Type(), $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
-            $encoder = $this->get('security.encoder_factory')->getEncoder($entity);
-            $passwordCodificado = $encoder->encodePassword(
-                $entity->getPassword(),
-                $entity->getSalt()
-            );
+            if($entity->getPassword()){
+                $encoder = $this->get('security.encoder_factory')->getEncoder($entity);
+                $passwordCodificado = $encoder->encodePassword(
+                    $entity->getPassword(),
+                    $entity->getSalt()
+                );
+            }
             $entity->setPassword($passwordCodificado);
             $em->persist($entity);
             $em->flush();

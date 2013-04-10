@@ -5,3 +5,9 @@ services:
 #    jordi_llonch_crud_generator.example:
 #        class: %jordi_llonch_crud_generator.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+#    jordi_llonch_crud_generator.form.type.roles:
+#        class: JordiLlonch\Bundle\CrudGeneratorBundle\Form\Type\RolesType
+#        arguments:
+#            - "%roles%"
+#        tags:
+#            - { name: form.type, alias: roles }

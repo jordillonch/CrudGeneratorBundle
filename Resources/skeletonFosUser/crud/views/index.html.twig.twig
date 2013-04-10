@@ -33,7 +33,7 @@
 
             <form class="well" action="{{ "{{ path('"~ route_name_prefix ~"') }}" }}" method="post" {{ "{{ form_enctype(filterForm) }}" }}>
 
-            {%- set fieldsIn = ['username', 'email', 'enabled'] %}
+                {%- set fieldsIn = ['username', 'email'] %}
 
                 {%- for field, metadata in fields if field in fieldsIn %}
 
@@ -56,7 +56,9 @@
     <table class="table table-striped table-bordered table-condensed">
     <thead>
         <tr>
-        {%- for field, metadata in fields %}
+        {%- set fieldsIn = ['username', 'email', 'enabled', 'roles'] %}
+
+        {%- for field, metadata in fields if field in fieldsIn %}
 
             <th>{{ field|capitalize }}</th>
 
@@ -69,7 +71,8 @@
     {{ '{% for entity in entities %}' }}
         <tr>
 
-    {%- for field, metadata in fields %}
+    {%- set fieldsIn = ['username', 'email', 'enabled', 'roles'] %}
+    {%- for field, metadata in fields if field in fieldsIn %}
         {%- if loop.first and ('show' in actions) %}
 
             <td><a href="{{ "{{ path('"~ route_name_prefix ~"_show', { 'id': entity.id }) }}" }}">{{ '{{ entity.'~ field|replace({'_': ''}) ~' }}' }}</a></td>
@@ -81,9 +84,18 @@
         {%- elseif metadata.type in ['boolean'] %}
 
             <td>
-                {% if 'entity.'~ field|replace({'_': ''}) %}
+                {{ '{% if entity.'~ field|replace({'_': ''}) ~' %}' }}
                     &#10004;
-                {% endif %}
+                {{ '{% endif %}' }}
+            </td>
+
+        {%- elseif metadata.type in ['array'] %}
+
+            <td>
+                {{ '{% for rol in entity.'~ field|replace({'_': ''}) ~' %}' }}
+                    {{ "{{ rol|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}
+                    <br>
+                {{ '{% endfor %}' }}
             </td>
 
         {%- else %}
@@ -92,14 +104,12 @@
 
         {%- endif %}
 
-        {%- if loop.last %}
+        {#%- if loop.last %#}{#%- endif %#}
+    {%- endfor %}
 
             <td>
                 {%- include "views/others/actions.html.twig.twig" %}
             </td>
-
-        {%- endif %}
-    {%- endfor %}
 
         </tr>
     {{ '{% endfor %}' }}

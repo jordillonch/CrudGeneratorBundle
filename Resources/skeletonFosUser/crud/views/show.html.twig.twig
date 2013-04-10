@@ -10,14 +10,32 @@
 
 <form class="form-horizontal">
     <fieldset>
-        {%- for field, metadata in fields %}
+        {%- set fieldsIn = ['username', 'email', 'enabled', 'roles'] %}
+        {%- for field, metadata in fields if field in fieldsIn %}
         <div class="control-group">
             <label class="control-label">{{ field|capitalize }}</label>
             <div class="controls">
                 {%- if metadata.type in ['date', 'datetime'] %}
-                <span class="input-xlarge uneditable-input">{{ '{{ entity.'~ field|replace({'_': ''}) ~'|date(\'Y-m-d H:i:s\') }}' }}</span>
+                <span class="input-xlarge uneditable-input">
+                    {{ '{{ entity.'~ field|replace({'_': ''}) ~'|date(\'Y-m-d H:i:s\') }}' }}
+                </span>
+                {%- elseif metadata.type in ['boolean'] %}
+                <span class="input-xlarge uneditable-input">
+                    {{ '{% if entity.'~ field|replace({'_': ''}) ~' %}' }}
+                        &#10004;
+                    {{ '{% endif %}' }}
+                </span>
+                {%- elseif metadata.type in ['array'] %}
+                {{ '{% for rol in entity.'~ field|replace({'_': ''}) ~' %}' }}
+                    <span class="input-xlarge uneditable-input">
+                        {{ "{{ rol|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}
+                    </span>
+                    <br>
+                {{ '{% endfor %}' }}
                 {%- else %}
-                <span class="input-xlarge uneditable-input">{{ '{{ entity.'~ field|replace({'_': ''}) ~' }}' }}</span>
+                <span class="input-xlarge uneditable-input">
+                    {{ '{{ entity.'~ field|replace({'_': ''}) ~' }}' }}
+                </span>
                 {%- endif %}
             </div>
         </div>

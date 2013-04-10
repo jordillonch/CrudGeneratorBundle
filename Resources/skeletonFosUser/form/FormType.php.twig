@@ -22,14 +22,7 @@ class {{ form_class }} extends AbstractType
                 'required' => false
             ))
         {% elseif field == 'roles' %}
-            ->add('{{ field }}', 'choice', array(
-                'required' => true,
-                'choices' => array(
-                                    'ROLE_ADMIN' => 'Administrador',
-                                    'ROLE_USER' => 'Usuario'
-                                  ),
-                'multiple' => true
-            ))
+            ->add('{{ field }}', 'roles')
         {% else %}
             ->add('{{ field }}')
         {% endif %}
