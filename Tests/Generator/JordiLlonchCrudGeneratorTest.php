@@ -14,13 +14,16 @@
 namespace JordiLlonch\Bundle\CrudGeneratorBundle\Tests\Generator;
 
 use Sensio\Bundle\GeneratorBundle\Tests\Generator\DoctrineCrudGeneratorTest;
-use Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator;
+use JordiLlonch\Bundle\CrudGeneratorBundle\Generator\JordiLlonchCrudGenerator;
 
 class JordiLlonchCrudGeneratorTest extends DoctrineCrudGeneratorTest
 {
     protected function getGenerator()
     {
-        return new DoctrineCrudGenerator($this->filesystem, __DIR__.'/../../Resources/skeleton/crud');
+        $generator =  new JordiLlonchCrudGenerator($this->filesystem);
+        $generator->setSkeletonDirs(array(__DIR__.'/../../Resources/skeleton'));
+
+        return $generator;
     }
 
     public function testGenerateYamlFull()
@@ -61,5 +64,14 @@ class JordiLlonchCrudGeneratorTest extends DoctrineCrudGeneratorTest
         foreach ($strings as $string) {
             $this->assertContains($string, $content);
         }
+
+
+        $this->assertTrue(file_exists($this->tmpDir.'/Form/PostFilterType.php'));
+
+        $content = file_get_contents($this->tmpDir.'/Form/PostFilterType.php');
+        $this->assertContains('->add(\'title\', \'filter_text\')', $content);
+        $this->assertContains('class PostFilterType extends AbstractType', $content);
+        $this->assertContains("'foo_barbundle_postfiltertype'", $content);
+
     }
 }

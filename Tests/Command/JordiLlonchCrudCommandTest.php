@@ -93,7 +93,7 @@ class JordiLlonchCrudCommandTest extends GenerateCommandTest
         $command->setHelperSet($this->getHelperSet($input));
         $command->setGenerator($generator);
         $command->setFormGenerator($this->getFormGenerator());
-        $command->setFormFilterGenerator($this->getFormFilterGenerator());
+//        $command->setFormFilterGenerator($this->getFormFilterGenerator());
 
         return $command;
     }

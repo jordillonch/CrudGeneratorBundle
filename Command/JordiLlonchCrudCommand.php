@@ -17,15 +17,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Sensio\Bundle\GeneratorBundle\Command\Validators;
 use Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand;
-use Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator;
-use Sensio\Bundle\GeneratorBundle\Generator\DoctrineFormGenerator;
 use JordiLlonch\Bundle\CrudGeneratorBundle\Generator\DoctrineFormFilterGenerator;
+use JordiLlonch\Bundle\CrudGeneratorBundle\Generator\JordiLlonchCrudGenerator;
 
 class JordiLlonchCrudCommand extends GenerateDoctrineCrudCommand
 {
     protected $generator;
     protected $formGenerator;
-    protected $formFilterGenerator;
 
     protected function configure()
     {
@@ -35,24 +33,27 @@ class JordiLlonchCrudCommand extends GenerateDoctrineCrudCommand
         $this->setDescription('A CRUD generator with paginating and filters.');
     }
 
-    /**
-     * @see Command
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function createGenerator($bundle = null)
     {
-        parent::execute($input, $output);
+        return new JordiLlonchCrudGenerator($this->getContainer()->get('filesystem'));
+    }
 
-        $entity = Validators::validateEntityName($input->getOption('entity'));
-        list($bundle, $entity) = $this->parseShortcutNotation($entity);
-        $entityClass = $this->getContainer()->get('doctrine')->getEntityNamespace($bundle).'\\'.$entity;
-        $metadata    = $this->getEntityMetadata($entityClass);
-        $bundle      = $this->getContainer()->get('kernel')->getBundle($bundle);
+    protected function getSkeletonDirs($bundle = null)
+    {
+        $skeletonDirs = array();
 
-        try {
-            $this->getFormFilterGenerator()->generate($bundle, $entity, $metadata[0]);
-        } catch (\RuntimeException $e ) {
-            // form already exists
+        if (isset($bundle) && is_dir($dir = $bundle->getPath().'/Resources/SensioGeneratorBundle/skeleton')) {
+            $skeletonDirs[] = $dir;
         }
+
+        if (is_dir($dir = $this->getContainer()->get('kernel')->getRootdir().'/Resources/SensioGeneratorBundle/skeleton')) {
+            $skeletonDirs[] = $dir;
+        }
+
+        $skeletonDirs[] = __DIR__.'/../Resources/skeleton';
+        $skeletonDirs[] = __DIR__.'/../Resources';
+
+        return $skeletonDirs;
     }
 
     protected function interact(InputInterface $input, OutputInterface $output)
@@ -61,53 +62,5 @@ class JordiLlonchCrudCommand extends GenerateDoctrineCrudCommand
         $dialog->writeSection($output, 'JordiLlonchCrudGeneratorBundle');
 
         parent::interact($input, $output);
-    }
-
-  protected function getGenerator()
-    {
-
-        $myResdir =$this->getContainer()->getParameter('kernel.root_dir');
-        if (null === $this->generator) {
-            if (file_exists($myResdir.'/Resources/JordiLlonchCrudGeneratorBundle/skeleton/crud')) {
-                $this->generator = new DoctrineCrudGenerator($this->getContainer()->get('filesystem'), $myResdir.'/Resources/JordiLlonchCrudGeneratorBundle/skeleton/crud');
-            }else{
-                $this->generator = new DoctrineCrudGenerator($this->getContainer()->get('filesystem'), __DIR__.'/../Resources/skeleton/crud');
-            }
-
-        }
-
-        return $this->generator;
-    }
-    protected function getFormGenerator()
-    {
-        if (null === $this->formGenerator) {
-            $this->formGenerator = new DoctrineFormGenerator($this->getContainer()->get('filesystem'),  __DIR__.'/../Resources/skeleton/form');
-        }
-
-        return $this->formGenerator;
-    }
-
-    protected function getFormFilterGenerator()
-    {
-        if (null === $this->formFilterGenerator) {
-            $this->formFilterGenerator = new DoctrineFormFilterGenerator($this->getContainer()->get('filesystem'),  __DIR__.'/../Resources/skeleton/form');
-        }
-
-        return $this->formFilterGenerator;
-    }
-
-    /**
-     * It is copied here because $this->generator it is a private variable on parent
-     * class and I created here as a protected varible.
-     * Without this method here, tests are not working.
-     */
-    public function setGenerator(DoctrineCrudGenerator $generator)
-    {
-        $this->generator = $generator;
-    }
-
-    public function setFormFilterGenerator(DoctrineFormFilterGenerator $formFilterGenerator)
-    {
-        $this->formFilterGenerator = $formFilterGenerator;
     }
 }

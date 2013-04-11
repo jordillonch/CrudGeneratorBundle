@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This file is part of the CrudGeneratorBundle
  *
@@ -13,38 +12,23 @@
 
 namespace JordiLlonch\Bundle\CrudGeneratorBundle\Generator;
 
-
-use Symfony\Component\Filesystem\Filesystem;
+use Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
-use Sensio\Bundle\GeneratorBundle\Generator\Generator;
 
-/**
- * Generates a form filter class based on a Doctrine entity.
- *
- * @author Jordi Llonch <llonch.jordi@gmail.com>
- */
-class DoctrineFormFilterGenerator extends Generator
+class JordiLlonchCrudGenerator extends DoctrineCrudGenerator
 {
-    private $filesystem;
-    private $skeletonDir;
-    private $className;
-    private $classPath;
+    protected $formFilterGenerator;
 
-    public function __construct(Filesystem $filesystem, $skeletonDir)
+    public function generate(BundleInterface $bundle, $entity, ClassMetadataInfo $metadata, $format, $routePrefix, $needWriteActions, $forceOverwrite)
     {
-        $this->filesystem = $filesystem;
-        $this->skeletonDir = $skeletonDir;
-    }
+        parent::generate($bundle, $entity, $metadata, $format, $routePrefix, $needWriteActions, $forceOverwrite);
 
-    public function getClassName()
-    {
-        return $this->className;
-    }
-
-    public function getClassPath()
-    {
-        return $this->classPath;
+        try {
+            $this->generateFormFilter($bundle, $entity, $metadata);
+        } catch (\RuntimeException $e ) {
+            // form already exists
+        }
     }
 
     /**
@@ -54,7 +38,7 @@ class DoctrineFormFilterGenerator extends Generator
      * @param string            $entity   The entity relative class name
      * @param ClassMetadataInfo $metadata The entity metadata class
      */
-    public function generate(BundleInterface $bundle, $entity, ClassMetadataInfo $metadata)
+    public function generateFormFilter(BundleInterface $bundle, $entity, ClassMetadataInfo $metadata)
     {
         $parts       = explode('\\', $entity);
         $entityClass = array_pop($parts);
@@ -74,12 +58,12 @@ class DoctrineFormFilterGenerator extends Generator
         $parts = explode('\\', $entity);
         array_pop($parts);
 
-        $this->renderFile($this->skeletonDir, 'FormFilterType.php.twig', $this->classPath, array(
-            'dir'              => $this->skeletonDir,
+        $this->renderFile('form/FormFilterType.php.twig', $this->classPath, array(
             'fields_data'      => $this->getFieldsDataFromMetadata($metadata),
             'namespace'        => $bundle->getNamespace(),
             'entity_namespace' => implode('\\', $parts),
             'entity_class'     => $entityClass,
+            'bundle'           => $bundle->getName(),
             'form_class'       => $this->className,
             'form_filter_type_name'   => strtolower(str_replace('\\', '_', $bundle->getNamespace()).($parts ? '_' : '').implode('_', $parts).'_'.$this->className),
         ));
@@ -118,7 +102,7 @@ class DoctrineFormFilterGenerator extends Generator
             case 'array':
                 throw new \Exception('The dbType "'.$dbType.'" is only for list implemented (column "'.$columnName.'")');
                 break;
-             case 'virtual':
+            case 'virtual':
                 throw new \Exception('The dbType "'.$dbType.'" is only for list implemented (column "'.$columnName.'")');
                 break;
             default:
@@ -140,9 +124,11 @@ class DoctrineFormFilterGenerator extends Generator
 
         // Convert type to filter widget
         foreach ($fieldsData as $fieldName => $data) {
+            $fieldsData[$fieldName]['fieldName'] = $fieldName;
             $fieldsData[$fieldName]['filterWidget'] = $this->getFilterType($fieldsData[$fieldName]['type'], $fieldName);
         }
 
         return $fieldsData;
     }
+
 }

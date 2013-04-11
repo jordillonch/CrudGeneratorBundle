@@ -17,7 +17,7 @@
         "pagerfanta/pagerfanta": "1.0.*@dev",
         "lexik/form-filter-bundle": "1.2.*"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "autoload": {
         "psr-0": { "JordiLlonch\\Bundle\\CrudGeneratorBundle": "" }
     },
