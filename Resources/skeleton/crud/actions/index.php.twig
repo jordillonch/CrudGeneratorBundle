@@ -42,12 +42,12 @@
         $queryBuilder = $em->getRepository('{{ bundle }}:{{ entity }}')->createQueryBuilder('e');
 
         // Reset filter
-        if ($request->getMethod() == 'POST' && $request->get('filter_action') == 'reset') {
+        if ($request->get('filter_action') == 'reset') {
             $session->remove('{{ entity }}ControllerFilter');
         }
 
         // Filter action
-        if ($request->getMethod() == 'POST' && $request->get('filter_action') == 'filter') {
+        if ($request->get('filter_action') == 'filter') {
             // Bind values from the request
             $filterForm->bind($request);
 
