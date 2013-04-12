@@ -31,7 +31,7 @@
     <div class="span12">
         <div id="filters" class="collapse">
 
-            <form class="well" action="{{ "{{ path('"~ route_name_prefix ~"') }}" }}" method="post" {{ "{{ form_enctype(filterForm) }}" }}>
+            <form class="well" action="{{ "{{ path('"~ route_name_prefix ~"') }}" }}" method="get" {{ "{{ form_enctype(filterForm) }}" }}>
 
                 {%- for field, metadata in fields %}
 
