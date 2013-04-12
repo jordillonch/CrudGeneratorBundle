@@ -1,0 +1,38 @@
+views:
+    layout:
+        bannersadmin: Administrateur
+    index:
+        filters: Filtres
+        filter: Filtrer
+        reset: Réinitialiser
+        list: Liste %entity%
+        actions: Actions
+        createnew: Créer un nouveau
+        pagprev: '&larr; Précédent'
+        pagnext: 'Suivant &rarr;'
+    actions:
+        show: afficher
+        edit: editer
+    recordactions:
+        backtothelist: Retour à la liste
+        edit: Editer
+        delete: Supprimer
+        confirm: Supprimer l'élément ?
+    new:
+        creation: Créer %entity%
+        create: Créer
+    edit:
+        edit: Editer %entity%
+        editbutton: Editer
+    show:
+        show: Voir %entity%
+flash:
+    create:
+        success: L'élément a été créé.
+        error: Une erreur est survenue lors de la création de l'élément.
+    update:
+        success: L'élément a été mis à jour.
+        error: Une erreur est survenue lors de la mise à jour de l'élément.
+    delete:
+        success: L'élément a été supprimé.
+        error: Une erreur est survenue lors de la suppression de l'élément.
