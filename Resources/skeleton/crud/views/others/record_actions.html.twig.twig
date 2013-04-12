@@ -14,6 +14,7 @@
 {% if ('delete' in actions) and (not hide_delete) %}
     <div class="float-left">
         <form action="{{ "{{ path('"~ route_name_prefix ~"_delete', { 'id': entity.id }) }}" }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
             {{ '{{ form_widget(delete_form) }}' }}
             <button class="btn btn-danger" type="submit" onclick="return confirm('{{ "{{ 'views.recordactions.confirm'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}');">{{ "{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}" }}</button>
         </form>
