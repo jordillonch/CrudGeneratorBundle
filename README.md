@@ -22,6 +22,13 @@ Well, because CRUD generator creates simple code, no magic, no configuration fil
 
 Add following lines to your `composer.json` file:
 
+#### Symfony 2.3
+
+    "require": {
+      ...
+      "jordillonch/crud-generator": "dev-master"
+    },
+
 #### Symfony 2.2
 
     "require": {
@@ -47,10 +54,6 @@ Add it to the `AppKernel.php` class:
     new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
     new JordiLlonch\Bundle\CrudGeneratorBundle\JordiLlonchCrudGeneratorBundle(),
 
-and:
-
-    $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
-
 Add it to your `app/config/config.yml`
 
     framework:
@@ -61,7 +64,7 @@ Add it to your `app/config/config.yml`
             resources:
                 - LexikFormFilterBundle:Form:form_div_layout.html.twig
 
-**This bundle only works with Symfony 2.1 and 2.2 version.**
+**This bundle works on Symfony 2.1, 2.2 and 2.3 version.**
 
 
 ## Dependencies
