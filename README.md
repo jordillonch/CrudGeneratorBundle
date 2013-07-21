@@ -33,7 +33,7 @@ Add following lines to your `composer.json` file:
 
     "require": {
       ...
-      "jordillonch/crud-generator": "dev-master"
+      "jordillonch/crud-generator": "2.2.*"
     },
     "minimum-stability": "dev",
 
@@ -41,7 +41,7 @@ Add following lines to your `composer.json` file:
 
     "require": {
       ...
-      "jordillonch/crud-generator": "2.1.x-dev"
+      "jordillonch/crud-generator": "2.1.*"
     },
     "minimum-stability": "dev",
 
