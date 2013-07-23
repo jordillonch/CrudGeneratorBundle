@@ -15,10 +15,9 @@ namespace JordiLlonch\Bundle\CrudGeneratorBundle\Command;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Sensio\Bundle\GeneratorBundle\Command\Validators;
 use Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand;
-use JordiLlonch\Bundle\CrudGeneratorBundle\Generator\DoctrineFormFilterGenerator;
 use JordiLlonch\Bundle\CrudGeneratorBundle\Generator\JordiLlonchCrudGenerator;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class JordiLlonchCrudCommand extends GenerateDoctrineCrudCommand
 {
@@ -50,8 +49,8 @@ class JordiLlonchCrudCommand extends GenerateDoctrineCrudCommand
             $skeletonDirs[] = $dir;
         }
 
-        $skeletonDirs[] = __DIR__.'/../Resources/skeleton';
-        $skeletonDirs[] = __DIR__.'/../Resources';
+        $skeletonDirs[] = $this->getContainer()->get('kernel')->locateResource('@JordiLlonchCrudGeneratorBundle/Resources/skeleton');
+        $skeletonDirs[] = $this->getContainer()->get('kernel')->locateResource('@JordiLlonchCrudGeneratorBundle/Resources');
 
         return $skeletonDirs;
     }

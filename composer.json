@@ -17,6 +17,9 @@
         "pagerfanta/pagerfanta": "1.0.*@dev",
         "lexik/form-filter-bundle": "1.2.*"
     },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
     "minimum-stability": "dev",
     "autoload": {
         "psr-0": { "JordiLlonch\\Bundle\\CrudGeneratorBundle": "" }
