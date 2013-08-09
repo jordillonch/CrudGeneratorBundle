@@ -17,6 +17,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand;
 use JordiLlonch\Bundle\CrudGeneratorBundle\Generator\JordiLlonchCrudGenerator;
+use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 class JordiLlonchCrudCommand extends GenerateDoctrineCrudCommand
 {
