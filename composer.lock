@@ -408,7 +408,7 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes Schmitt",
+                    "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
                     "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -715,12 +715,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "700bdc5e56fb2c17b88e459c730e93f0d6e4efa2"
+                "reference": "a8c497fb2d59d347fb6c22173827ae70d91d37fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/700bdc5e56fb2c17b88e459c730e93f0d6e4efa2",
-                "reference": "700bdc5e56fb2c17b88e459c730e93f0d6e4efa2",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/a8c497fb2d59d347fb6c22173827ae70d91d37fa",
+                "reference": "a8c497fb2d59d347fb6c22173827ae70d91d37fa",
                 "shasum": ""
             },
             "require": {
@@ -754,7 +754,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
-            "time": "2013-08-09 12:48:25"
+            "time": "2013-08-10 06:57:32"
         },
         {
             "name": "symfony/icu",
