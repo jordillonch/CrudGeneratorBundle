@@ -1,0 +1,38 @@
+views:
+    layout:
+        bannersadmin: Administrator
+    index:
+        filters: Filtry
+        filter: Filtr
+        reset: Reset
+        list: %entity% - lista
+        actions: Akcje
+        createnew: Utwórz
+        pagprev: '&larr; Poprzednia'
+        pagnext: 'Następna &rarr;'
+    actions:
+        show: lista
+        edit: edycja
+    recordactions:
+        backtothelist: Wróć do listy
+        edit: Edycja
+        delete: Usuń
+        confirm: Usunąć element?
+    new:
+        creation: Utwórz %entity%
+        create: Utwórz
+    edit:
+        edit: Edytuj %entity%
+        editbutton: Edytuj
+    show:
+        show: Lista %entity%
+flash:
+    create:
+        success: Element utworzony prawidłowo.
+        error: Tworzenie nowego elementu zakończone błędem.
+    update:
+        success: Aktualizacja powidoła się.
+        error: Aktualizacja zakończona błędem.
+    delete:
+        success: Element został usunięty.
+        error: Próba usunięcia zakończona błędem.
