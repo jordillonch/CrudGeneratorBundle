@@ -11,7 +11,7 @@ views:
         pagprev: '&larr; Poprzednia'
         pagnext: 'Następna &rarr;'
     actions:
-        show: lista
+        show: podgląd
         edit: edycja
     recordactions:
         backtothelist: Wróć do listy
