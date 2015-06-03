@@ -12,11 +12,11 @@
         }
     ],
     "require": {
-        "symfony/symfony": ">2.2.0, <2.7-dev",
-        "sensio/generator-bundle": ">2.2.0, <2.4-dev",
+        "symfony/symfony": ">2.2.0",
+        "sensio/generator-bundle": ">2.2.0",
         "pagerfanta/pagerfanta": "1.0.*@dev",
         "lexik/form-filter-bundle": "~3.0",
-        "doctrine/orm": ">=2.2.3,<2.5-dev"
+        "doctrine/orm": ">=2.2.3"
     },
     "require-dev": {
         "phpunit/phpunit": "4.1.*"

@@ -22,7 +22,7 @@ Well, because CRUD generator creates simple code, no magic, no configuration fil
 
 Add following lines to your `composer.json` file:
 
-#### Symfony 2.5
+#### Symfony >= 2.5
 
     "require": {
       ...
@@ -78,7 +78,7 @@ Add it to your `app/config/config.yml`
             resources:
                 - LexikFormFilterBundle:Form:form_div_layout.html.twig
 
-**This bundle works on Symfony 2.1, 2.2, 2.3, 2.4 and 2.5 version.**
+**This bundle works on Symfony 2.1, 2.2, 2.3, 2.4 and >= 2.5 version.**
 
 
 ## Dependencies
