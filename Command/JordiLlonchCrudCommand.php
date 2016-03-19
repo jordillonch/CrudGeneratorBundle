@@ -13,10 +13,10 @@
 
 namespace JordiLlonch\Bundle\CrudGeneratorBundle\Command;
 
+use JordiLlonch\Bundle\CrudGeneratorBundle\Generator\JordiLlonchCrudGenerator;
+use Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand;
-use JordiLlonch\Bundle\CrudGeneratorBundle\Generator\JordiLlonchCrudGenerator;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 
@@ -35,7 +35,7 @@ class JordiLlonchCrudCommand extends GenerateDoctrineCrudCommand
 
     protected function createGenerator($bundle = null)
     {
-        return new JordiLlonchCrudGenerator($this->getContainer()->get('filesystem'));
+        return new JordiLlonchCrudGenerator($this->getContainer()->get('filesystem'), $this->getContainer()->get('kernel')->getRootDir());
     }
 
     protected function getSkeletonDirs(BundleInterface $bundle = null)
