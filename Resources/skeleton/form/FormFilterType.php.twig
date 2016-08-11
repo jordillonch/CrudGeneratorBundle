@@ -28,11 +28,11 @@ class {{ form_class }} extends AbstractType
             foreach ($event->getData() as $data) {
                 if(is_array($data)) {
                     foreach ($data as $subData) {
-                        if(!empty($subData)) return;
+                        if(null !== $subData) return;
                     }
                 }
                 else {
-                    if(!empty($data)) return;
+                    if(null !== $data) return;
                 }
             }
 
