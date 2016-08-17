@@ -72,7 +72,7 @@ class JordiLlonchCrudGenerator extends DoctrineCrudGenerator
     {
         switch ($dbType) {
             case 'boolean':
-                return 'filter_choice';
+                return 'filter_boolean';
             case 'datetime':
             case 'vardatetime':
             case 'datetimetz':
